@@ -92,17 +92,17 @@ export default function Hero() {
               Enhance your productivity with innovative task management platform
             </p>
             <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-              <button className="px-6 py-3 bg-blue-900 text-white rounded-md">How it works</button>
-              <button className="px-6 py-3 bg-blue-900 text-white rounded-md">Get Started For Free</button>
+              <Link to="/register"><button className="px-6 py-3 bg-blue-900 text-white rounded-md">How it works</button></Link>
+              <Link to="/register"><button className="px-6 py-3 bg-blue-900 text-white rounded-md">Get Started For Free</button></Link>
             </div>
             <p className="text-gray-600 mt-8">Trusted by credible companies globally</p>
-            <div className="flex flex-wrap mt-4 pt-14 px-0">
-              <img src="https://placehold.co/100x40?text=Netflix" alt="Netflix logo" className="mx-2"/>
-              <img src="https://placehold.co/100x40?text=Hulu" alt="Hulu logo" className="mx-2"/>
-              <img src="https://placehold.co/100x40?text=ASUS" alt="ASUS logo" className="mx-2"/>
-              <img src="https://placehold.co/100x40?text=Adidas" alt="Adidas logo" className="mx-2"/>
-              <img src="https://placehold.co/100x40?text=Sony" alt="Sony logo" className="mx-2"/>
-              <img src="https://placehold.co/100x40?text=EA" alt="EA logo" className="mx-2"/>
+            <div className="flex flex-wrap mt-2 pt-2 px-0">
+              <img src="https://placehold.co/100x40?text=Netflix" alt="Netflix logo" className="size-10 mx-2"/>
+              <img src="https://placehold.co/100x40?text=Hulu" alt="Hulu logo" className=" size-10  mx-2"/>
+              <img src="https://placehold.co/100x40?text=ASUS" alt="ASUS logo" className=" size-10 mx-2"/>
+              <img src="https://placehold.co/100x40?text=Adidas" alt="Adidas logo" className=" size-10 mx-2"/>
+              <img src="https://placehold.co/100x40?text=Sony" alt="Sony logo" className="size-10  mx-2"/>
+              <img src="https://placehold.co/100x40?text=EA" alt="EA logo" className=" size-10 mx-2"/>
             </div>
           </div>
           <div className="w-full md:w-[500px] bg-purple-100 rounded-lg overflow-hidden">

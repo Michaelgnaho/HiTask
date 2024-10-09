@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom"
 import g50 from '../assets/g50.png';
+import highTaskLogo from "../assets/hitask_logo.png";
+
 
 function loginPage() {
   return (
@@ -10,57 +10,22 @@ function loginPage() {
       <div className="absolute top-0 left-0 w-full p-6 flex justify-between items-center">
         <div className="flex item-start justify-start">
           <img
-            src="https://storage.googleapis.com/a1aa/image/hY10kdLYH2JNKlYZltWPAJf2F71MdVIgqri0bCjLwPtTKtxJA.jpg"
+          src={highTaskLogo}
             alt="HITask Logo"
             className="mr-2"
             width="40"
             height="40"
           />
-          <span className="text-2xl text-black font-bold">HITask</span>
-        </div>
+        </div> 
         <nav className="flex ">
-        <div className='flex bg-transparent gap-3 rounded-lg border-2 border-blue  mr-[400px] ml-4'>
 
-          <div className="relative group">
-            <button className="text-gray-700 bg-transparent font-medium">
-              Features <FontAwesomeIcon icon={faChevronDown} />
-            </button>
-            <div className="absolute left-0 mt-2 w-48 bg-transparent border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                Feature 1
-              </a>
-              <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                Feature 2
-              </a>
-            </div>
-          </div>
+          <div className='flex'>           
+          <span className='text-black px-2 pt-1'>have no account? </span>
 
-          <div className="relative group">
-            <button className="text-gray-700  bg-transparent font-medium">
-              Resources <FontAwesomeIcon icon={faChevronDown} />
-            </button>
-            <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                Resource 1
-              </a>
-              <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                Resource 2
-              </a>
-            </div>
-          </div>
-
-          <a href="#" className="text-gray-700  bg-transparent font-medium pt-2 pr-4">
-            Pricing
-          </a>
-          </div>
-
-
-          <Link to="/register" className="text-gray-700 text-[20px] font-bold mr-5 pt-2">
-            Sign Up
+          <Link to="/register" className="bg-blue-600 text-white px-2 py-1 rounded-md text-center mr-5"> 
+            Sing up
           </Link>
-          <Link to="/login" className="bg-blue-600 text-white px-4 py-1 rounded-md mr-5">
-            Log In
-          </Link>
+          </div>
         </nav>
       </div>
       <div className=" pl-0 p-10 flex flex-col shadow-lg w-full   mt-[100px] mb-4">
@@ -89,7 +54,7 @@ function loginPage() {
           </div>
           <Link to="/dashboard">
   <button className="w-full bg-blue-600 text-white py-2 rounded-md">
-    Sign Up
+    Sign In
   </button>
 </Link>
           

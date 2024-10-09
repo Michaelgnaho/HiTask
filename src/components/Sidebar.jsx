@@ -1,4 +1,6 @@
 // src/components/Sidebar.jsx
+import highTaskLogo from "../assets/hitask_logo.png";
+
 
 import { FaTimes, FaHome, FaInbox, FaTasks, FaUsers, FaStickyNote, FaProjectDiagram, FaBell, FaChartLine, FaPlug, FaCog } from "react-icons/fa";
 
@@ -21,7 +23,14 @@ function Sidebar({ isOpen, toggleSidebar }) {
       >
         {/* Close Button (Visible on Mobile) */}
         <div className="flex items-center justify-between mb-8 md:hidden">
-          <div className="text-3xl font-bold text-blue-600">H</div>
+        <img
+      src={highTaskLogo}
+        alt="HITask Logo"
+        className="mr-2"
+        width="40"
+        height="40"
+      />
+
           <button
             className="text-2xl text-gray-700 focus:outline-none"
             onClick={toggleSidebar}
@@ -33,7 +42,13 @@ function Sidebar({ isOpen, toggleSidebar }) {
 
         {/* Sidebar Logo (Visible on Desktop) */}
         <div className="hidden md:flex items-center mb-8">
-          <div className="text-3xl font-bold text-blue-600">H</div>
+        <img
+      src={highTaskLogo}
+        alt="HITask Logo"
+        className="mr-2"
+        width="40"
+        height="40"
+      />
         </div>
 
         {/* Navigation Links */}
