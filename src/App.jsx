@@ -9,6 +9,14 @@ import InterfacePage from "./pages/interfacePage"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RegisterPage from "./pages/registerPage"
 import LoginPage from "./pages/loginPage"
+import IntegrationPage from "./pages/IntegrationPage"
+import NotePage from "./pages/NotePage"
+import PricingPage from "./pages/pricingPage"
+import ReminderPage from "./pages/reminderPage"
+import SettingPage from "./pages/settingPage"
+import TaskPrioritizationPage from "./pages/taskPrioritizationPage"
+import TeamPage from "./pages/teamPage"
+import ProjectPage from "./pages/ProjectPage"
 
 
 function App() {
@@ -34,6 +42,20 @@ function App() {
         <Route path ="/dashboard" element = {<InterfacePage/>}/>
         <Route path ="/login" element = {<LoginPage/>}/>
         <Route path ="/register" element = {<RegisterPage/>}/>
+        <Route path ="/integration" element = {<IntegrationPage/>}/>
+        <Route path ="/note" element = {<NotePage/>}/>
+        <Route path ="/pricing" element = {<PricingPage/>}/>
+        <Route path ="/reminder" element = {<ReminderPage/>}/>
+        <Route path ="/setting" element = {<SettingPage/>}/>
+        <Route path ="/task" element = {<TaskPrioritizationPage/>}/>
+        <Route path ="/team" element = {<TeamPage/>}/>
+        <Route path ="/project" element = {<ProjectPage/>}/>
+
+
+
+
+
+
 
           </Routes>
         </BrowserRouter>

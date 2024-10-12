@@ -1,7 +1,7 @@
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
 
-function PricingPage() {
+function IntegrationPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Function to toggle sidebar visibility
@@ -18,4 +18,4 @@ function PricingPage() {
 }
 
 
-export default PricingPage;
+export default IntegrationPage;

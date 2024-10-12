@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
  import g50 from '../assets/g50.png';
  import highTaskLogo from "../assets/hitask_logo.png";
 
-function registerPage() { return ( <div className="relative bg-gradient-to-r from-slate-100 to-white min-h-screen flex items-center justify-center m-0 p-0 ">
+function RegisterPage() { return ( <div className="relative bg-gradient-to-r from-slate-100 to-white min-h-screen flex items-center justify-center m-0 p-0 ">
 
   <div className="absolute top-0 left-0 w-full p-6 flex justify-between items-center">
     <div className="flex item-start justify-start">
@@ -90,4 +90,4 @@ Already have an account? <Link to="/login" className="text-blue-600">Login</Link
 </div>
 ); }
 
-export default registerPage
+export default RegisterPage
