@@ -3,7 +3,7 @@ import g50 from '../assets/g50.png';
 import highTaskLogo from "../assets/hitask_logo.png";
 
 
-function loginPage() {
+function LoginPage() {
   return (
     <div className="relative bg-gradient-to-r from-slate-100 to-white  min-h-screen flex items-center justify-center m-0 p-0 ">
 
@@ -37,9 +37,9 @@ function loginPage() {
         <div className='flex '>
         <img src={g50} alt="svg" className='flex w-[200px] z-2' />
 
-        <form className='w-[500px] ml-auto'>
+        <form className='w-[500px] text-black  ml-auto'>
           <div className="mb-4">
-            <label className="block text-gray-700 mb-2">Enter your email</label>
+            <label className="block mb-2">Enter your email</label>
             <input
               type="email"
               className="w-full bg-white px-4 py-2 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
@@ -69,4 +69,4 @@ function loginPage() {
   );
 }
 
-export default loginPage
+export default LoginPage

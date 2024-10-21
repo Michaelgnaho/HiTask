@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import highTaskLogo from "../assets/hitask_logo.png";
 import highpic1 from "../assets/hitask_pic1.png";
+import companyLogo from "../assets/companyLogo.png"
 
 export default function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -97,12 +98,8 @@ export default function Hero() {
             </div>
             <p className="text-gray-600 mt-8">Trusted by credible companies globally</p>
             <div className="flex flex-wrap mt-2 pt-2 px-0">
-              <img src="https://placehold.co/100x40?text=Netflix" alt="Netflix logo" className="size-10 mx-2"/>
-              <img src="https://placehold.co/100x40?text=Hulu" alt="Hulu logo" className=" size-10  mx-2"/>
-              <img src="https://placehold.co/100x40?text=ASUS" alt="ASUS logo" className=" size-10 mx-2"/>
-              <img src="https://placehold.co/100x40?text=Adidas" alt="Adidas logo" className=" size-10 mx-2"/>
-              <img src="https://placehold.co/100x40?text=Sony" alt="Sony logo" className="size-10  mx-2"/>
-              <img src="https://placehold.co/100x40?text=EA" alt="EA logo" className=" size-10 mx-2"/>
+              <img src={companyLogo} alt="Netflix logo" className=" mx-2"/>
+             
             </div>
           </div>
           <div className="w-full md:w-[500px] bg-purple-100 rounded-lg overflow-hidden">

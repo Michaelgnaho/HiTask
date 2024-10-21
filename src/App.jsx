@@ -4,7 +4,7 @@ import Hero from "./components/Hero"
 import Pricing from "./components/Pricing"
 import Why from "./components/Why"
 import "./index.css"
-import AnalyticsPage from "./pages/analyticsPage"
+import AnalyticPage from "./pages/AnalyticPage"
 import InterfacePage from "./pages/interfacePage"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RegisterPage from "./pages/registerPage"
@@ -38,7 +38,7 @@ function App() {
               <Footer />
             </>
           } />
-        <Route path ="/analytics" element = {<AnalyticsPage/>}/>
+        <Route path ="/analytics" element = {<AnalyticPage/>}/>
         <Route path ="/dashboard" element = {<InterfacePage/>}/>
         <Route path ="/login" element = {<LoginPage/>}/>
         <Route path ="/register" element = {<RegisterPage/>}/>
