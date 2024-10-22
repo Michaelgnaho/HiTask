@@ -10,7 +10,7 @@ function IntegrationPage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row bg-gradient-to-r from-white to-slate-100 min-h-screen">
+    <div className="flex  flex-col text-black md:flex-row bg-gradient-to-r from-white to-slate-100 min-h-screen">
       {/* Sidebar */}
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
@@ -28,6 +28,7 @@ function IntegrationPage() {
           </button>
 
           {/* Title and Search */}
+          <div className="flex flex-col mt-4 px-2 ">
           <div className="flex-1">
             <h1 className="text-xl sm:text-2xl font-semibold mb-4">Connect your favourite tools</h1>
           </div>
@@ -39,6 +40,7 @@ function IntegrationPage() {
               className="hidden sm:block px-4 py-2 border rounded-md mr-4"
             />
             <button className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm">+ Create Integration</button>
+          </div>
           </div>
         </div>
 

@@ -1,5 +1,7 @@
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
+import { FaBars, FaSlack, FaTrello, FaGithub, FaBold, FaItalic, FaUnderline, FaList, FaLink, FaPlus } from "react-icons/fa";
+
 
 function TaskPrioritizationPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -24,8 +26,8 @@ function TaskPrioritizationPage() {
             onClick={toggleSidebar}
             aria-label="Toggle Sidebar"
           >
-            <i className="fas fa-bars"></i>
-          </button>
+            <FaBars />
+            </button>
 
           {/* Greeting */}
           <div>

@@ -1,5 +1,7 @@
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
+import { FaBars} from "react-icons/fa";
+
 
 function NotePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -23,7 +25,7 @@ function NotePage() {
             onClick={toggleSidebar}
             aria-label="Toggle Sidebar"
           >
-            <i className="fas fa-bars"></i>
+          <FaBars/>
           </button>
 
           {/* Search Bar */}

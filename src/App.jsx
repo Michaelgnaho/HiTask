@@ -17,6 +17,7 @@ import SettingPage from "./pages/settingPage"
 import TaskPrioritizationPage from "./pages/taskPrioritizationPage"
 import TeamPage from "./pages/teamPage"
 import ProjectPage from "./pages/ProjectPage"
+import InboxPage from "./pages/InboxPage"
 
 
 function App() {
@@ -50,6 +51,8 @@ function App() {
         <Route path ="/task" element = {<TaskPrioritizationPage/>}/>
         <Route path ="/team" element = {<TeamPage/>}/>
         <Route path ="/project" element = {<ProjectPage/>}/>
+        <Route path ="/inbox" element = {<InboxPage/>}/>
+
 
 
 

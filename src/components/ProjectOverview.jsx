@@ -3,8 +3,8 @@ function ProjectOverview() {
 	return (
 		<div className="col-span-2 bg-white p-6 rounded-lg shadow-lg">
 			<h2 className="text-xl font-semibold mb-4">Project Overview</h2>
-			<div className="flex">
-				<ul className="space-y-2 flex-1">
+			<div className="flex flex-col">
+				<ul className="space-y-2 flex-1 m-2">
 					<li>Deploy major software update</li>
 					<li>Fix critical bug</li>
 					<li>Explore new UI design pattern</li>
@@ -13,7 +13,7 @@ function ProjectOverview() {
 					<li>Develop new project plan</li>
 					<li>Mobile App Developer</li>
 				</ul>
-				<div className="w-1/2">
+				<div className="w-1/2 m-2">
 					<img src="https://placehold.co/200x200" alt="Pie chart showing project distribution" />
 				</div>
 			</div>

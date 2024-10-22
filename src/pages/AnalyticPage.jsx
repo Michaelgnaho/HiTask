@@ -12,7 +12,7 @@ function AnalyticPage() {
   };
 
   return (
-    <div className="flex  md:flex-row bg-gradient-to-r from-white to-slate-100 min-h-screen">
+    <div className="flex text-black  md:flex-row bg-gradient-to-r from-white to-slate-100 min-h-screen">
       {/* Sidebar */}
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
