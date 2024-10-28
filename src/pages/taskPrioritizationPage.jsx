@@ -1,6 +1,6 @@
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
-import { FaBars, FaSlack, FaTrello, FaGithub, FaBold, FaItalic, FaUnderline, FaList, FaLink, FaPlus } from "react-icons/fa";
+import { FaBars} from "react-icons/fa";
 
 
 function TaskPrioritizationPage() {

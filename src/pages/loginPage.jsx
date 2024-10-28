@@ -7,7 +7,7 @@ function LoginPage() {
     <div className="relative bg-gradient-to-r from-slate-100 to-white min-h-screen flex items-center justify-center m-0 p-0">
 
       {/* Mobile background */}
-      <div className="absolute  sm:hidden" style={{ backgroundImage: `url(${g50})` }}></div>
+      <div className="absolute z-0  sm:hidden" style={{ backgroundImage: `url(${g50})` }}></div>
 
       <div className="absolute top-0 left-0 w-full p-6 flex justify-between items-center">
         <div className="flex item-start justify-start">
@@ -29,17 +29,18 @@ function LoginPage() {
         </nav>
       </div>
 
-      <div className=" p-10 pb-0 h-[620px] flex flex-col shadow-lg w-full mt-[100px] ">
+      <div className=" p-10 pb-0 h-[620px] flex flex-col shadow-lg w-full mt-[100px]  justify-center  " >
         <h1 className="text-2xl text-black font-bold mb-4 text-center">Welcome to HITask</h1>
         <p className="text-gray-600 mb-8 text-center">
           Log in to your account to access your dashboard.
         </p>
+        {/* <img src={g50} alt="svg" className='hidden sm:flex w-[200px] z-0' /> */}
 
-        <div className='flex'>
+
+        <div className='flex items-center justify-center'>
           {/* Hide g50 image on mobile */}
-          <img src={g50} alt="svg" className='hidden sm:flex w-[200px] z-2' />
-          <form className='w-[500px] text-black ml-auto'>
-            <div className="mb-4">
+          <form className='w-[500px] text-black items-center justify-center z-50' >
+          <div className="mb-4">
               <label className="block mb-2">Enter your email</label>
               <input
                 type="email"

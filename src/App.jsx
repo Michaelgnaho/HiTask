@@ -34,8 +34,8 @@ function App() {
             <>
               <Hero />
               <Why />
-              <Pricing />
               <CTA />
+              <Pricing />
               <Footer />
             </>
           } />

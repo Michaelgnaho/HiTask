@@ -142,7 +142,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
 
         {/* User Profile */}
         <div className="absolute bottom-4 left-4 right-4 flex items-center mb-10">
-          <img src="https://placehold.co/40x40" alt="User profile" className="rounded-full mr-2 m-" />
+          <img src="https://placehold.co/40x40" alt="User profile" className="rounded-full mr-2 " />
           <div>
             <div className="text-gray-800">John Thompson</div>
             <NavLink to="/" className="text-gray-600 text-sm">

@@ -27,7 +27,7 @@ function RegisterPage() {
         </nav>
       </div>
 
-      <div className="p-10 flex flex-col shadow-lg w-full mt-[100px] mb-4">
+      <div className="p-10 flex flex-col shadow-lg w-full mt-[100px] mb-4 justify-center items-center">
         <h1 className="text-2xl text-black font-bold mb-4 text-center">Welcome to HITask</h1>
         <p className="text-gray-600 mb-8 text-center">
           Securely update your personal details, manage your preferences, and ensure your profile is always up to date.
@@ -35,7 +35,6 @@ function RegisterPage() {
 
         <div className="flex">
           {/* Hide g50 image on mobile */}
-          <img src={g50} alt="svg" className="hidden sm:flex w-[200px] z-2" />
           
           <form className="w-full sm:w-[500px] ml-auto">
             <div className="mb-4">

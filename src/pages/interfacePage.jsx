@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
+import  interfaceimg from "../assets/interfaceImg1.png"
+
 import { FaBars, FaSlack, FaTrello, FaGithub, FaBold, FaItalic, FaUnderline, FaList, FaLink, FaPlus } from "react-icons/fa";
 
 function InterfacePage() {
@@ -11,7 +13,7 @@ function InterfacePage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row bg-gradient-to-r from-white to-slate-100 min-h-screen">
+    <div className="flex flex-col text-black md:flex-row bg-gradient-to-r from-white to-slate-100 min-h-screen">
       {/* Sidebar */}
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
@@ -115,7 +117,7 @@ function InterfacePage() {
           <div className="bg-white border rounded-lg p-4 md:col-span-2">
             <h2 className="font-bold mb-4">Upcoming Project</h2>
             <img
-              src="https://placehold.co/600x300"
+              src={interfaceimg}
               alt="Team working on a project"
               className="rounded-lg mb-4"
             />
@@ -153,7 +155,7 @@ function InterfacePage() {
           </div>
 
           {/* Add a Note */}
-          <div className="bg-white shadow-md border rounded-lg p-4">
+          <div className="bg-white text-black  shadow-md border rounded-lg p-4">
             <h2 className="font-bold mb-4">Add a Note</h2>
             <textarea
               className="w-full bg-white shadow-md border rounded-lg p-2 mb-4"

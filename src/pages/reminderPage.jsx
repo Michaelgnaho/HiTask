@@ -1,6 +1,8 @@
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
 import { FaBars} from "react-icons/fa";
+import remind1 from "../assets/remind1.png"
+
 
 
 function ReminderPage() {
@@ -63,21 +65,49 @@ function ReminderPage() {
         {/* Activity Section */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="col-span-2 bg-white p-6 rounded-lg shadow">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-bold text-black">Activity</h3>
-              <div className="flex space-x-4">
-                <button className="px-4 py-2 bg-gray-200 rounded-full">Week</button>
-                <button className="px-4 py-2 bg-blue-600 text-white rounded-full">Month</button>
-              </div>
-            </div>
-            <div className="flex space-x-4">
-              <div className="w-1/6 bg-blue-600 h-24 rounded"></div>
-              <div className="w-1/6 bg-pink-600 h-32 rounded"></div>
-              <div className="w-1/6 bg-blue-600 h-16 rounded"></div>
-              <div className="w-1/6 bg-blue-600 h-20 rounded"></div>
-              <div className="w-1/6 bg-blue-600 h-12 rounded"></div>
-              <div className="w-1/6 bg-blue-600 h-16 rounded"></div>
-            </div>
+          <div className="p-8">
+                    <div className="flex justify-between items-center mb-4">
+                        <h1 className="text-2xl font-semibold">Activity</h1>
+                        <div className="flex space-x-2 border rounded-full p-1 bg-white shadow">
+                            <button className="px-4 py-1 rounded-full bg-white text-gray-700">Week</button>
+                            <button className="px-4 py-1 rounded-full bg-gray-200 text-gray-500">Month</button>
+                        </div>
+                    </div>
+                    <div className="flex items-end space-x-4">
+                        <div className="flex flex-col items-center">
+                            <div className="bg-blue-400 w-12 h-32 rounded-t-lg"></div>
+                            <span className="mt-2 text-sm text-gray-600">3:00PM</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="bg-blue-600 w-12 h-24 rounded-t-lg"></div>
+                            <span className="mt-2 text-sm text-gray-600">3:30PM</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="bg-red-500 w-12 h-40 rounded-t-lg"></div>
+                            <span className="mt-2 text-sm text-gray-600">5:00AM</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="bg-gray-200 w-12 h-8 rounded-t-lg flex items-center justify-center text-xs text-gray-500">Day off</div>
+                            <span className="mt-2 text-sm text-gray-600">7:00AM</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="bg-blue-800 w-12 h-12 rounded-t-lg"></div>
+                            <span className="mt-2 text-sm text-gray-600">1:00PM</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="bg-blue-800 w-12 h-24 rounded-t-lg"></div>
+                            <span className="mt-2 text-sm text-gray-600">3:00PM</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="bg-blue-800 w-12 h-20 rounded-t-lg"></div>
+                            <span className="mt-2 text-sm text-gray-600">4:30PM</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="bg-gray-200 w-12 h-8 rounded-t-lg flex items-center justify-center text-xs text-gray-500">Day off</div>
+                            <span className="mt-2 text-sm text-gray-600">6:00PM</span>
+                        </div>
+                    </div>
+                </div>
           </div>
 
           {/* Reminders Section */}

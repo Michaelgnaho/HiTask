@@ -13,7 +13,7 @@ function MainContent() {
 				<StatsCard number="25" label="Completed Projects" />
 				<StatsCard number="18" label="Upcoming Projects" />
 			</div>
-			<div className="grid grid-cols-1 sm:grid-cols-2 mt-8 gap-8"> {/* Responsive grid */}
+			<div className="grid grid-cols-1 sm:flex mt-8 gap-2"> {/* Responsive grid */}
 				<ProjectOverview />
 				<RecentMessages />
 			</div>

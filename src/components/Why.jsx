@@ -1,11 +1,11 @@
-import highpic2 from "../assets/highPic2.png";
-import highpic3 from "../assets/highpic3.png";
-import highpic4 from "../assets/highPic4.png";
+import highpic2 from "../assets/f1.png";
+import highpic3 from "../assets/F2.png";
+import highpic4 from "../assets/F3.png";
 
 function Why() {
     return (
-        <div className="text-center bg-white py-12 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl text-gray-600 font-semibold mb-4">Why HiTask</h1>
+        <section className="text-center text-black bg-white py-12 px-4 sm:px-6 lg:px-8" id="features">
+            <h1 className="text-3xl text-gray-600 font-semibold mb-4">Our Features</h1>
             <p className="text-gray-600 mb-12">
                 Hi Task Management helps you stay organized, focused, and productive. With easy task tracking, seamless collaboration, 
                 and smart reminders, you will achieve more in less time.
@@ -79,7 +79,7 @@ function Why() {
                     </button>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

@@ -11,7 +11,7 @@ function ProjectPage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row bg-gradient-to-r from-white to-slate-100 min-h-screen">
+    <div className="flex flex-col text-black md:flex-row bg-gradient-to-r from-white to-slate-100 min-h-screen">
       {/* Sidebar */}
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 

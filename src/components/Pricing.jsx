@@ -1,7 +1,7 @@
 import highpic5 from "../assets/highPuc5.png"
 function Pricing() {
     return (
-        <div className="text-center">
+        <div className="text-center" id="pricing">
             <div className="bg-white py-12 px-4 sm:px-6 lg:px-8">
                 <h1 className="text-2xl text-black font-semibold">Clear, affordable pricing</h1>
                 <p className="mt-4 text-gray-600">

@@ -1,5 +1,18 @@
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
+import Group1  from "../assets/Group1.png"
+import Group2 from "../assets/Group2.png"
+import Group3 from "../assets/Group3.png"
+import Group4 from "../assets/Group4.png"
+import Group5 from "../assets/Group5.png"
+import Group6 from "../assets/Group6.png"
+import Group7 from "../assets/Group7.png"
+import Group8 from "../assets/Group8.png"
+import Group9 from "../assets/Group9.png"
+import Group10 from "../assets/Group10.png"
+import Group11 from "../assets/Group11.png"
+import Group12 from "../assets/Group12.png"
+
 
 function IntegrationPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -54,7 +67,29 @@ function IntegrationPage() {
 
         {/* Tools Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {[
+        <img src={Group1} alt="logo" className=" mx-2"/>
+        <img src={Group2} alt="logo" className=" mx-2"/>
+        <img src={Group3} alt="logo" className=" mx-2"/>
+        <img src={Group4} alt="logo" className=" mx-2"/>
+        <img src={Group5} alt="logo" className=" mx-2"/>
+        <img src={Group6} alt="logo" className=" mx-2"/>
+        <img src={Group7} alt="logo" className=" mx-2"/>
+        <img src={Group8} alt="logo" className=" mx-2"/>
+        <img src={Group9} alt="logo" className=" mx-2"/>
+        <img src={Group10} alt="logo" className=" mx-2"/>
+        <img src={Group11} alt="logo" className=" mx-2"/>
+        <img src={Group12} alt="logo" className=" mx-2"/>
+       
+
+
+        
+
+
+        
+        
+        
+        
+          {/* {[
             { name: 'Framer', description: 'Send and receive notifications from channels.', img: 'https://placehold.co/50x50', alt: 'Framer logo' },
             { name: 'Slack', description: 'Send and receive notifications from channels.', img: 'https://placehold.co/50x50', alt: 'Slack logo' },
             { name: 'Microsoft Teams', description: 'Send and receive notifications from channels.', img: 'https://placehold.co/50x50', alt: 'Microsoft Teams logo' },
@@ -83,7 +118,7 @@ function IntegrationPage() {
                 </label>
               </div>
             </div>
-          ))}
+          ))} */}
         </div>
       </main>
     </div>
