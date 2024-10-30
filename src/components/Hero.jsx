@@ -3,20 +3,21 @@ import { Link } from "react-router-dom";
 import highTaskLogo from "../assets/hitask_logo.png";
 import highpic1 from "../assets/hitask_pic1.png";
 import companyLogo from "../assets/companyLogo.png"
+import "animate.css"
 
 export default function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
-      <div className="min-h-screen min-w-full flex flex-col">
+      <div className="min-h-screen min-w-full flex flex-col animate__animated animate__fadeInUp animate__slow">
         {/* Navbar */}
-        <header className="flex justify-between items-center p-6 bg-white">
+        <header className="flex justify-between items-center p-6 bg-white animate__animated animate__fadeInUp animate__slow">
           <div className="flex items-center">
             <img src={highTaskLogo} alt="logo" />
           </div>
           {/* Desktop Menu */}
-          <nav className="hidden md:flex border-xl rounded-lg p-3 border-2 border-slate-200 space-x-8">
+          <nav className="hidden md:flex border-xl rounded-lg p-3 border-2 border-slate-200 space-x-8 animate__animated animate__fadeInUp animate__slow">
             <div className="relative group">
               <a  href="#features" className="text-gray-700 bg-white font-medium">Features</a>
               
@@ -63,10 +64,10 @@ export default function Hero() {
         {/* Mobile Menu */}
         {menuOpen && (
           <div className="md:hidden p-6 bg-white border-t border-gray-200">
-            <div className="space-y-4">
-              <Link to="/features" className="block text-gray-700">Features</Link>
-              <Link to="/resources" className="block text-gray-700">Resources</Link>
-              <Link to="/pricing" className="block text-gray-700">Pricing</Link>
+            <div className="space-y-4 flex flex-col">
+              <a  href="#features" className="text-gray-700 bg-white font-medium">Features</a>
+              <a href ="#aboutUs" className="text-gray-700 bg-white font-medium">About Us</a>
+              <a href="#pricing" className="text-gray-700 font-medium ">Pricing</a>
               <div className="space-y-4 mt-4">
                 <Link to="/login" className="block text-gray-700">Log In</Link>
                 <Link to="/register" className="block px-4 py-2 bg-blue-900 text-white rounded-md">
@@ -78,8 +79,8 @@ export default function Hero() {
         )}
 
         {/* Hero Section */}
-        <main className="flex flex-1 flex-col md:flex-row items-center justify-between p-6 md:p-12 bg-white">
-          <div className="max-w-lg mb-8 md:mb-0">
+        <main className="flex flex-1 flex-col md:flex-row items-center justify-between p-6 md:p-12 bg-white animate__animated animate__fadeInUp animate__slow">
+          <div className="max-w-lg mb-8 md:mb-0 animate__animated animate__fadeInLeft animate__slow">
             <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
               Your All-in-one Task Management Tool Designed To Revolutionize Your Daily Workflow
             </h1>
@@ -96,7 +97,7 @@ export default function Hero() {
              
             </div>
           </div>
-          <div className="w-full md:w-[500px] bg-purple-100 rounded-lg overflow-hidden">
+          <div className="w-full md:w-[500px] bg-purple-100 rounded-lg overflow-hidden animate__animated animate__fadeInRight animate__slow ">
             <img src={highpic1} alt="Three people collaborating in an office setting" className="w-full h-full object-cover" />
           </div>
         </main>
