@@ -1,11 +1,42 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import  interfaceimg from "../assets/interfaceImg1.png"
+import { auth, db } from "../firebaseConfig";
+import {getDoc , doc } from "firebase/firestore"
 
-import { FaBars, FaSlack, FaTrello, FaGithub, FaBold, FaItalic, FaUnderline, FaList, FaLink, FaPlus } from "react-icons/fa";
+import { FaBars, FaSlack, FaTrello, FaGithub, FaBold, FaItalic, FaUnderline, FaList, FaLink, FaPlus, FaUser } from "react-icons/fa";
+import Header from "../components/Header";
 
 function InterfacePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [userCredential, setUserCredential] = useState(null);
+
+  const fetchUserData = async () => {
+    auth.onAuthStateChanged(async (user) =>{
+      console.log(user);
+      const docRef = doc(db,"users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setUserCredential(docSnap.data());
+        console.log(docSnap.data());
+        console.log(userCredential)
+      } else {
+        setUserCredential("No data available");
+        console.log(userCredential)
+      }
+
+
+    }
+
+    )
+    
+  }
+
+  useEffect(()=>{
+    fetchUserData()
+
+  },[])
 
   // Function to toggle sidebar visibility
   const toggleSidebar = () => {
@@ -13,6 +44,7 @@ function InterfacePage() {
   };
 
   return (
+    
     <div className="flex flex-col text-black md:flex-row bg-gradient-to-r from-white to-slate-100 min-h-screen">
       {/* Sidebar */}
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
@@ -20,32 +52,9 @@ function InterfacePage() {
       {/* Main Content */}
       <div className="flex-1 p-4 md:p-8">
         {/* Header */}
-        <header className="flex justify-between items-center mb-8">
-          {/* Hamburger Menu (Visible on Mobile) */}
-          <button
-            className="md:hidden text-2xl text-gray-700 focus:outline-none"
-            onClick={toggleSidebar}
-            aria-label="Toggle Sidebar"
-          >
-            <FaBars />
-          </button>
+        
 
-          {/* Greeting */}
-          <div>
-            <h1 className="text-xl sm:text-2xl text-black font-bold">Hello John</h1>
-            <p className="text-sm sm:text-base text-gray-600">How can I help you today?</p>
-          </div>
-
-          {/* Search Bar */}
-          <div className="hidden sm:block">
-            <input
-              type="text"
-              placeholder="Search for something"
-              className="border text-black bg-white rounded-full px-4 py-2"
-            />
-          </div>
-        </header>
-
+        <Header toggleSidebar={toggleSidebar} userCredential={userCredential} />
         {/* Action Buttons */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2 mb-3">
           <button className="bg-white text-black shadow-sm border rounded-lg p-2">Integrate your tools</button>

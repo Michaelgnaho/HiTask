@@ -1,8 +1,54 @@
 import highTaskLogo from "../assets/hitask_logo.png";
-import { FaTimes, FaHome, FaInbox, FaTasks, FaUsers, FaStickyNote, FaProjectDiagram, FaBell, FaChartLine, FaPlug, FaCog } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { FaTimes, FaHome, FaInbox, FaTasks, FaUsers, FaStickyNote, FaProjectDiagram, FaBell, FaChartLine, FaPlug, FaCog, FaUser   } from "react-icons/fa";
+import { useNavigate, NavLink } from "react-router-dom";
+import { auth, db } from "../firebaseConfig";
+import {getDoc , doc } from "firebase/firestore"
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 function Sidebar({ isOpen, toggleSidebar }) {
+  const [userCredential, setUserCredential] = useState(null);
+  const navigate = useNavigate();
+
+  const fetchUserData = async () => {
+    auth.onAuthStateChanged(async (user) =>{
+      console.log(user);
+      const docRef = doc(db,"users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setUserCredential(docSnap.data());
+        console.log(docSnap.data());
+        console.log(userCredential)
+      } else {
+        setUserCredential("No data available");
+        console.log(userCredential)
+      }
+
+
+    }
+
+    )
+    
+  }
+
+  useEffect(()=>{
+    fetchUserData()
+
+  },[]);
+
+  async function HandleLogOut (){
+    try {
+      await auth.signOut();
+      setUserCredential(null);
+      toast.success("Logged Out sucessfully")
+      navigate("/login")
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  }
+
+
   return (
     <>
       {/* Overlay */}
@@ -142,12 +188,15 @@ function Sidebar({ isOpen, toggleSidebar }) {
 
         {/* User Profile */}
         <div className="absolute bottom-4 left-4 right-4 flex items-center mb-10">
-          <img src="https://placehold.co/40x40" alt="User profile" className="rounded-full mr-2 " />
+        <div className="w-10 h-10 rounded-full bg-gray-300 flex flex-col items-center justify-center m-2">
+          {userCredential && userCredential.photo ? (<img src={userCredential.photo} alt="profile" className="rounded-full m-2" />) :  (<FaUser  className="text-gray-500 m-2" size={40} />)} 
+          </div>
           <div>
-            <div className="text-gray-800">John Thompson</div>
-            <NavLink to="/" className="text-gray-600 text-sm">
+            <div className="text-gray-800 text-[0.7rem]"> {userCredential ?  ` ${userCredential.fname }` : (<span>Loading...</span> ) }
+            </div>
+            <div onClick={HandleLogOut} className="text-gray-600 text-sm">
               Logout
-            </NavLink>
+            </div>
           </div>
         </div>
       </aside>

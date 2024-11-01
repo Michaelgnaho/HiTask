@@ -1,9 +1,39 @@
 import Sidebar from "../components/Sidebar"; // Import Sidebar component
-import { useState } from "react"; // Import useState hook
-import { FaBars } from "react-icons/fa"; // Import icon for the mobile hamburger menu
+import { useEffect, useState } from "react";
+import { auth, db } from "../firebaseConfig";
+import {getDoc , doc } from "firebase/firestore"
+import Header from "../components/Header";
 
 function TeamPage() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State to manage sidebar visibility
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [userCredential, setUserCredential] = useState(null);
+
+  const fetchUserData = async () => {
+    auth.onAuthStateChanged(async (user) =>{
+      console.log(user);
+      const docRef = doc(db,"users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setUserCredential(docSnap.data());
+        console.log(docSnap.data());
+        console.log(userCredential)
+      } else {
+        setUserCredential("No data available");
+        console.log(userCredential)
+      }
+
+
+    }
+
+    )
+    
+  }
+
+  useEffect(()=>{
+    fetchUserData()
+
+  },[]) // State to manage sidebar visibility
 
   // Function to toggle sidebar visibility
   const toggleSidebar = () => {
@@ -15,48 +45,15 @@ function TeamPage() {
       {/* Sidebar component with toggle functionality */}
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
-      {/* Hamburger menu for mobile */}
-      <div className="md:hidden p-4">
-        <button
-          className="text-2xl text-gray-700 focus:outline-none"
-          onClick={toggleSidebar}
-          aria-label="Toggle Sidebar"
-        >
-          <FaBars />
-        </button>
-      </div>
+
 
       <main className="flex-1 p-6 md:p-8 bg-slate-50">
+      <Header toggleSidebar={toggleSidebar} userCredential={userCredential} />
         {/* Search bar and user controls */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 space-y-4 md:space-y-0">
-          {/* Search input */}
-          <div className="flex items-center w-full md:w-auto">
-            <input
-              type="text"
-              placeholder="Search"
-              className="border rounded-full py-2 px-4 w-full md:w-64"
-            />
-            <i className="fas fa-search ml-2 text-white-500"></i>
-          </div>
-          {/* User icons and avatar */}
-          <div className="flex items-center space-x-4">
-            <i className="fas fa-bell text-gray-500"></i>
-            <i className="fas fa-cog text-gray-500"></i>
-            <img
-              src="https://placehold.co/40x40"
-              alt="User avatar"
-              className="rounded-full"
-            />
-          </div>
-        </div>
+        {/*  */}
 
         {/* Welcome message */}
-        <div className="mb-6">
-          <h1 className="text-xl sm:text-2xl text-black font-semibold">Hello Thompson</h1>
-          <p className="text-gray-600">
-            Update your work to ensure everyone stays aligned and productive, making teamwork more efficient and streamlined.
-          </p>
-        </div>
+        
 
         {/* Main content: Team members, tasks needing review, and completed tasks */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

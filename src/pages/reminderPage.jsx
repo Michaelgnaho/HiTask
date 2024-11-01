@@ -1,10 +1,40 @@
 import Sidebar from "../components/Sidebar";
-import { useState } from "react";
 import { FaBars } from "react-icons/fa";
-import remind1 from "../assets/remind1.png";
+import { useEffect, useState } from "react";
+import { auth, db } from "../firebaseConfig";
+import {getDoc , doc } from "firebase/firestore"
+import Header from "../components/Header";
 
 function ReminderPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [userCredential, setUserCredential] = useState(null);
+
+  const fetchUserData = async () => {
+    auth.onAuthStateChanged(async (user) =>{
+      console.log(user);
+      const docRef = doc(db,"users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setUserCredential(docSnap.data());
+        console.log(docSnap.data());
+        console.log(userCredential)
+      } else {
+        setUserCredential("No data available");
+        console.log(userCredential)
+      }
+
+
+    }
+
+    )
+    
+  }
+
+  useEffect(()=>{
+    fetchUserData()
+
+  },[])
 
   // Function to toggle sidebar visibility
   const toggleSidebar = () => {
@@ -18,46 +48,18 @@ function ReminderPage() {
 
       {/* Main Content */}
       <main className="flex-1 p-4 md:p-8 bg-gradient-to-r from-purple-50 to-blue-50">
-        <header className="flex justify-between items-center mb-8">
-          {/* Hamburger Menu (Visible on Mobile) */}
-          <button
-            className="md:hidden text-2xl text-gray-700 focus:outline-none"
-            onClick={toggleSidebar}
-            aria-label="Toggle Sidebar"
-          >
-            <FaBars />
-          </button>
+        <header className="flex flex-col mb-8">
+        <Header toggleSidebar={toggleSidebar} userCredential={userCredential} />
 
-          {/* Greeting */}
           <div>
-            <h1 className="text-lg sm:text-2xl text-black font-bold">Hello John</h1>
             <p className="text-sm sm:text-base text-black">View and manage projects</p>
           </div>
 
           {/* Search Bar */}
-          <div className="hidden sm:block">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search"
-                className="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 w-full"
-              />
-              <i className="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-            </div>
-          </div>
+         
 
-          {/* User Info */}
-          <div className="hidden sm:flex items-center space-x-4">
-            <i className="fas fa-bell text-gray-400"></i>
-            <div className="flex items-center">
-              <div className="w-8 h-8 bg-gray-300 rounded-full mr-2"></div>
-              <div>
-                <p className="text-black">John Thompson</p>
-                <p className="text-black text-sm">Developer</p>
-              </div>
-              <i className="fas fa-chevron-down ml-2 text-gray-400"></i>
-            </div>
-          </div>
+         
+          
         </header>
 
         {/* Activity Section */}

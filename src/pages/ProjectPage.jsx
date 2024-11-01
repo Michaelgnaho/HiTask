@@ -1,9 +1,41 @@
 import Sidebar from "../components/Sidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { auth, db } from "../firebaseConfig";
+import {getDoc , doc } from "firebase/firestore"
 import { FaBars } from "react-icons/fa";
+import Header from "../components/Header";
+
 
 function ProjectPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [userCredential, setUserCredential] = useState(null);
+
+  const fetchUserData = async () => {
+    auth.onAuthStateChanged(async (user) =>{
+      console.log(user);
+      const docRef = doc(db,"users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setUserCredential(docSnap.data());
+        console.log(docSnap.data());
+        console.log(userCredential)
+      } else {
+        setUserCredential("No data available");
+        console.log(userCredential)
+      }
+
+
+    }
+
+    )
+    
+  }
+
+  useEffect(()=>{
+    fetchUserData()
+
+  },[])
 
   // Function to toggle sidebar visibility
   const toggleSidebar = () => {
@@ -18,30 +50,17 @@ function ProjectPage() {
       {/* Main Content */}
       <div className="flex-1 p-4 md:p-8">
         {/* Header */}
-        <header className="flex justify-between items-center mb-8">
+        <header className="flex flex-col mb-8">
           {/* Hamburger Menu (Visible on Mobile) */}
-          <button
-            className="md:hidden text-2xl text-gray-700 focus:outline-none"
-            onClick={toggleSidebar}
-            aria-label="Toggle Sidebar"
-          >
-            <FaBars />
-          </button>
+          <Header toggleSidebar={toggleSidebar} userCredential={userCredential} />
 
-          {/* Greeting */}
           <div>
             <h1 className="text-xl sm:text-2xl text-black font-bold">Project Overview</h1>
             <p className="text-sm sm:text-base text-gray-600">Manage your projects efficiently</p>
           </div>
 
           {/* Search Bar */}
-          <div className="hidden sm:block">
-            <input
-              type="text"
-              placeholder="Search projects"
-              className="border text-black bg-white rounded-full px-4 py-2"
-            />
-          </div>
+          
         </header>
 
         {/* Project Actions */}

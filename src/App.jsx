@@ -6,7 +6,7 @@ import Why from "./components/Why"
 import "./index.css"
 import AnalyticPage from "./pages/AnalyticPage"
 import InterfacePage from "./pages/interfacePage"
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import RegisterPage from "./pages/registerPage"
 import LoginPage from "./pages/loginPage"
 import IntegrationPage from "./pages/IntegrationPage"
@@ -18,13 +18,22 @@ import TaskPrioritizationPage from "./pages/taskPrioritizationPage"
 import TeamPage from "./pages/teamPage"
 import ProjectPage from "./pages/ProjectPage"
 import InboxPage from "./pages/InboxPage"
+import ResetPasswordPage from "./pages/ResetPasswordPage"; // Import the new page
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+
 
 
 function App() {
 
+
+  
+
   return (
 
     <div className="bg-white h-screen w-full absolute top-0 left-0">
+     <ToastContainer />
         <BrowserRouter>
         
     
@@ -41,7 +50,7 @@ function App() {
           } />
         <Route path ="/analytics" element = {<AnalyticPage/>}/>
         <Route path ="/dashboard" element = {<InterfacePage/>}/>
-        <Route path ="/login" element = {<LoginPage/>}/>
+        <Route path ="/login" element ={<LoginPage/>}/>
         <Route path ="/register" element = {<RegisterPage/>}/>
         <Route path ="/integration" element = {<IntegrationPage/>}/>
         <Route path ="/note" element = {<NotePage/>}/>
@@ -52,13 +61,7 @@ function App() {
         <Route path ="/team" element = {<TeamPage/>}/>
         <Route path ="/project" element = {<ProjectPage/>}/>
         <Route path ="/inbox" element = {<InboxPage/>}/>
-
-
-
-
-
-
-
+        <Route path="/reset-password" element={<ResetPasswordPage />} /> 
 
           </Routes>
         </BrowserRouter>

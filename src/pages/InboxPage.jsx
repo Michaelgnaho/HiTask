@@ -1,8 +1,39 @@
+import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { auth, db } from "../firebaseConfig";
+import {getDoc , doc } from "firebase/firestore"
 function InboxPage() {
  
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [userCredential, setUserCredential] = useState(null);
+
+  const fetchUserData = async () => {
+    auth.onAuthStateChanged(async (user) =>{
+      console.log(user);
+      const docRef = doc(db,"users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setUserCredential(docSnap.data());
+        console.log(docSnap.data());
+        console.log(userCredential)
+      } else {
+        setUserCredential("No data available");
+        console.log(userCredential)
+      }
+
+
+    }
+
+    )
+    
+  }
+
+  useEffect(()=>{
+    fetchUserData()
+
+  },[])
   
     // Function to toggle sidebar visibility
     const toggleSidebar = () => {
@@ -13,6 +44,8 @@ function InboxPage() {
 <div className="flex  bg-gradient-to-r from-white to-slate-100">
     <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar}/>
     <div className="p-4 flex flex-col w-full">
+    <Header toggleSidebar={toggleSidebar} userCredential={userCredential} />
+
   
                     <div className="flex  flex-col justify-between items-center mb-4">
                     <div className="flex items-center space-x-4 ml-auto">
@@ -23,13 +56,8 @@ function InboxPage() {
           >
             &#9776;
           </button>
-                            <div className="relative">
-                                <input type="text" placeholder="Search" className="border rounded-full py-1 px-4" />
-                                <i className="fas fa-search absolute right-3 top-2 text-white-500 "></i>
-                            </div>
-                            <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
-                                <i className="fas fa-user bg-transparent"></i>
-                            </div>
+                          
+                            
                  
                         </div>
                         <div className="flex space-x-4 mr-auto">

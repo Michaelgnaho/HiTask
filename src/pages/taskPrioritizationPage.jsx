@@ -1,10 +1,40 @@
 import Sidebar from "../components/Sidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { auth, db } from "../firebaseConfig";
+import {getDoc , doc } from "firebase/firestore"
 import { FaBars} from "react-icons/fa";
-
+import Header from "../components/Header";
 
 function TaskPrioritizationPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [userCredential, setUserCredential] = useState(null);
+
+  const fetchUserData = async () => {
+    auth.onAuthStateChanged(async (user) =>{
+      console.log(user);
+      const docRef = doc(db,"users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setUserCredential(docSnap.data());
+        console.log(docSnap.data());
+        console.log(userCredential)
+      } else {
+        setUserCredential("No data available");
+        console.log(userCredential)
+      }
+
+
+    }
+
+    )
+    
+  }
+
+  useEffect(()=>{
+    fetchUserData()
+
+  },[])
 
   // Function to toggle sidebar visibility
   const toggleSidebar = () => {
@@ -19,21 +49,9 @@ function TaskPrioritizationPage() {
       {/* Main Content */}
       <main className="flex-1 p-4 md:p-8 bg-gradient-to-r from-gray-100 to-gray-200">
         {/* Header */}
-        <header className="flex justify-between items-center mb-8">
-          {/* Hamburger Menu (Visible on Mobile) */}
-          <button
-            className="md:hidden text-2xl text-gray-700 focus:outline-none"
-            onClick={toggleSidebar}
-            aria-label="Toggle Sidebar"
-          >
-            <FaBars />
-            </button>
+        <header className="flex flex-col  mb-8">
+        <Header toggleSidebar={toggleSidebar} userCredential={userCredential} />
 
-          {/* Greeting */}
-          <div>
-            <h1 className="text-xl sm:text-2xl font-bold text-black">Hello John</h1>
-            <p className="text-sm sm:text-base text-black">View and modify tasks</p>
-          </div>
 
           {/* Search and Filters (Visible on larger screens) */}
           <div className="hidden sm:flex items-center space-x-4">

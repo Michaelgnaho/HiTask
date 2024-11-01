@@ -1,10 +1,40 @@
 import Sidebar from "../components/Sidebar";
-import { useState } from "react";
-import { FaBars} from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { auth, db } from "../firebaseConfig";
+import {getDoc , doc } from "firebase/firestore"
+import Header from "../components/Header";
 
 
 function NotePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [userCredential, setUserCredential] = useState(null);
+
+  const fetchUserData = async () => {
+    auth.onAuthStateChanged(async (user) =>{
+      console.log(user);
+      const docRef = doc(db,"users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setUserCredential(docSnap.data());
+        console.log(docSnap.data());
+        console.log(userCredential)
+      } else {
+        setUserCredential("No data available");
+        console.log(userCredential)
+      }
+
+
+    }
+
+    )
+    
+  }
+
+  useEffect(()=>{
+    fetchUserData()
+
+  },[])
 
   // Function to toggle sidebar visibility
   const toggleSidebar = () => {
@@ -18,42 +48,11 @@ function NotePage() {
 
       {/* Main Content */}
       <div className="flex-1 p-4 md:p-6 bg-gray-50">
-        <header className="flex justify-between items-center mb-6">
-          {/* Hamburger Menu (Visible on Mobile) */}
-          <button
-            className="md:hidden text-2xl text-gray-700 focus:outline-none"
-            onClick={toggleSidebar}
-            aria-label="Toggle Sidebar"
-          >
-          <FaBars/>
-          </button>
-
-          {/* Search Bar */}
-          <div className="relative w-full md:w-1/2">
-            <input
-              type="text"
-              placeholder="Search"
-              className="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600"
-            />
-            <i className="fas fa-search absolute top-3 right-4 text-gray-400"></i>
-          </div>
-
-          {/* Add Note Button */}
-          <div className="hidden md:flex items-center">
-            <button className="px-4 py-2 text-white bg-blue-600 rounded-full hover:bg-blue-700">
-              + Add Note
-            </button>
-            <img
-              src="https://placehold.co/40x40"
-              alt="User profile"
-              className="w-10 h-10 rounded-full ml-4"
-            />
-          </div>
-        </header>
+      <Header toggleSidebar={toggleSidebar} userCredential={userCredential} />
+ 
 
         {/* Greeting Section */}
         <div className="mb-6">
-          <h1 className="text-xl md:text-2xl font-semibold mb-2">Hello Thompson</h1>
           <p className="text-gray-600">
             Keep track of important details and ideas here. Organize your thoughts and ensure
             nothing slips through the cracks.

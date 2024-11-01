@@ -1,5 +1,8 @@
 import Sidebar from "../components/Sidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { auth, db } from "../firebaseConfig";
+import {getDoc , doc } from "firebase/firestore"
+import Header from "../components/Header";
 import Group1  from "../assets/Group1.png"
 import Group2 from "../assets/Group2.png"
 import Group3 from "../assets/Group3.png"
@@ -16,6 +19,34 @@ import Group12 from "../assets/Group12.png"
 
 function IntegrationPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [userCredential, setUserCredential] = useState(null);
+
+  const fetchUserData = async () => {
+    auth.onAuthStateChanged(async (user) =>{
+      console.log(user);
+      const docRef = doc(db,"users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setUserCredential(docSnap.data());
+        console.log(docSnap.data());
+        console.log(userCredential)
+      } else {
+        setUserCredential("No data available");
+        console.log(userCredential)
+      }
+
+
+    }
+
+    )
+    
+  }
+
+  useEffect(()=>{
+    fetchUserData()
+
+  },[])
 
   // Function to toggle sidebar visibility
   const toggleSidebar = () => {
@@ -23,23 +54,16 @@ function IntegrationPage() {
   };
 
   return (
-    <div className="flex  flex-col text-black md:flex-row bg-gradient-to-r from-white to-slate-100 min-h-screen">
+    <div className="flex w-full  text-black md:flex-row bg-gradient-to-r from-white to-slate-100  min-h-screen">
       {/* Sidebar */}
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
       {/* Main Content */}
-      <main className="flex-1 p-4 md:p-8">
+      <main className="flex-1 flex-col p-2 md:p-8 w-full" >
+       <Header toggleSidebar={toggleSidebar} userCredential={userCredential} />
+
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
-          {/* Hamburger Menu (Visible on Mobile) */}
-          <button
-            className="md:hidden text-2xl text-gray-700 focus:outline-none"
-            onClick={toggleSidebar}
-            aria-label="Toggle Sidebar"
-          >
-            &#9776;
-          </button>
-
           {/* Title and Search */}
           <div className="flex flex-col mt-4 px-2 ">
           <div className="flex-1">
